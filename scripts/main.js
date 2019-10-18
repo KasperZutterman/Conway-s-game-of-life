@@ -1,6 +1,6 @@
 import BoardManager from './model/BoardManager.js';
 //import Board from './model/Board.js';
-import BoardView from './view/Boardview.js';
+import BoardView from './view/BoardView.js';
 
 let canvas = document.getElementById("canvas");
 let context = canvas.getContext("2d");
