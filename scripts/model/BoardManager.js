@@ -1,5 +1,5 @@
 import Board from './Board.js'
-import BoardView from '../view/BoardView.js'
+//import BoardView from '../view/BoardView.js'
 
 export default class BoardManager {
         
