@@ -1,5 +1,5 @@
 import BoardManager from './model/BoardManager.js';
-import Board from './model/Board.js';
+//import Board from './model/Board.js';
 import BoardView from './view/Boardview.js';
 
 let canvas = document.getElementById("canvas");
