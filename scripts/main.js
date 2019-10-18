@@ -14,7 +14,7 @@ let gridLines = false;
 let view = new BoardView(canvas);
 
 let boardManager = new BoardManager(60, 40, 10, 10, view);
-boardManager.drawBoard();
+boardManager.drawOldBoard();
 //view.draw();
 
 document.addEventListener('keydown', (e) => {
@@ -22,6 +22,7 @@ document.addEventListener('keydown', (e) => {
     if (e.code === "ArrowRight") {
         gridLines = !gridLines;
         if (gridLines) boardManager.drawGrid();
+        else boardManager.drawOldBoard();
     }
     else if (e.code === "Enter") {
         boardManager.nextGeneration();

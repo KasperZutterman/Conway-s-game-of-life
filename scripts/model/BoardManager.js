@@ -11,7 +11,7 @@ export default class BoardManager {
             this.boardView = boardView;
             this.board1 = new Board(this.width, this.height, this.cellWidth, this.cellHeight);
             this.board2 = new Board(this.width, this.height, this.cellWidth, this.cellHeight);
-            this.board1Old = true;
+            this.board1Old = false;
         }
         
         calculateNextBoard(bNew, bOld) {
@@ -50,6 +50,14 @@ export default class BoardManager {
                 this.boardView.draw(this.board2);
             } else {
                 this.boardView.draw(this.board1);
+            }      
+        }
+        
+        drawOldBoard() {
+            if (this.board1Old) {
+                this.boardView.draw(this.board1);
+            } else {
+                this.boardView.draw(this.board2);
             }      
         }
         
