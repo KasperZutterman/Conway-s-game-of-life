@@ -2,10 +2,16 @@ import BoardManager from './model/BoardManager.js';
 //import Board from './model/Board.js';
 import BoardView from './view/BoardView.js';
 
+let gridLines = false;
+
 let canvas = document.getElementById("canvas");
 let context = canvas.getContext("2d");
-
-let gridLines = false;
+let gridbox = document.getElementById("gridCheckbox");
+gridbox.addEventListener('change', (e) => {
+    gridLines = !gridLines;
+        if (gridLines) boardManager.drawGrid();
+        else boardManager.drawOldBoard();
+});
 
 //setInterval(console.log(1), 1000);
 //let board = new Board(120,80);
