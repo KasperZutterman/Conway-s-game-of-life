@@ -1,4 +1,4 @@
-import Board from '../model/Board.js';
+//import Board from '../model/Board.js';
 
 export default class BoardView {
         
