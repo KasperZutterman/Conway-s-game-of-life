@@ -2,9 +2,14 @@
 
 export default class BoardDAO {
         
-        constructor() {
+        constructor(width, height, cellWidth, cellHeight) {
+            this.width = width;
+            this.height = height;
+            this.cellWidth = cellWidth;
+            this.cellHeight = cellHeight;
             this.gridData;
-            this.makeGridData();
+            this.makeGridData(this.width, this.height);
+            this.generation = 0;
         } 
         
         makeGridData(rows, cols) {
@@ -23,6 +28,13 @@ export default class BoardDAO {
             }
         }
         
+        addData(board) {
+            for (let y = 0; y < board.height; y++) {
+                for (let x = 0; x < board.width; x++) {
+                    this.gridData[y][x] += board.grid[y][x].alive ? 1 : 0;
+                }
+            }
+            this.generation++;
+        }
+        
 }
-
-
