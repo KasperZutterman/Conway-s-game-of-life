@@ -19,9 +19,6 @@ gridbox.addEventListener('change', (e) => {
         else boardManager.drawOldBoard();
 });
 
-//setInterval(console.log(1), 1000);
-//let board = new Board(120,80);
-//console.log(board);
 let boardDAO = new BoardDAO(60, 40, 10, 10);
 
 let boardView = new BoardView(canvasBoard);
@@ -29,7 +26,6 @@ let dataView = new DataView(canvasHeatMap, boardDAO);
 
 let boardManager = new BoardManager(60, 40, 10, 10, boardView);
 boardManager.drawOldBoard();
-//view.draw();
 
 document.addEventListener('keydown', (e) => {
     //console.log(e.code);
@@ -45,3 +41,23 @@ document.addEventListener('keydown', (e) => {
         if (gridLines) boardManager.drawGrid();
     }
 });
+
+canvasBoard.addEventListener("mousedown", (e) => {
+    
+    if (e.which === 1) { //Left mouse button
+        console.log("LEFT");
+    }
+    else if (e.which === 3) { //Right mouse button
+        console.log("Right");
+        
+    }
+});
+
+window.oncontextmenu = function(event) {
+    var source = event.target.id || event.srcElement.id;
+    if(source === 'canvasBoard') {
+        event.preventDefault();
+        event.stopPropagation();
+        return false;
+    }
+};
