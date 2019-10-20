@@ -4,6 +4,11 @@ import BoardView from './view/BoardView.js';
 import DataView from './view/DataView.js';
 import BoardDAO from './model/BoardDAO.js';
 
+let width = 60;
+let height = 40;
+let cellWidth = 10;
+let cellHeight = 10;
+
 let gridLines = false;
 
 let canvasBoard = document.getElementById("canvasBoard");
@@ -19,12 +24,12 @@ gridbox.addEventListener('change', (e) => {
         else boardManager.drawOldBoard();
 });
 
-let boardDAO = new BoardDAO(60, 40, 10, 10);
+let boardDAO = new BoardDAO(width, height, cellWidth, cellHeight);
 
 let boardView = new BoardView(canvasBoard);
 let dataView = new DataView(canvasHeatMap, boardDAO);
 
-let boardManager = new BoardManager(60, 40, 10, 10, boardView);
+let boardManager = new BoardManager(width, height, cellWidth, cellHeight, boardView);
 boardManager.drawOldBoard();
 
 document.addEventListener('keydown', (e) => {
@@ -43,7 +48,10 @@ document.addEventListener('keydown', (e) => {
 });
 
 canvasBoard.addEventListener("mousedown", (e) => {
-    
+    const rect = canvasBoard.getBoundingClientRect();
+    const x = Math.floor((event.clientX - rect.left) / cellWidth);
+    const y = Math.floor((event.clientY - rect.top) / cellHeight);
+    //console.log("x: " + x + " y: " + y);
     if (e.which === 1) { //Left mouse button
         console.log("LEFT");
     }
