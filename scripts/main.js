@@ -11,6 +11,9 @@ let cellHeight = 10;
 
 let gridLines = false;
 
+//let canvas = document.getElementById("canvas");
+//let context = canvas.getContext("2d");
+
 let canvasBoard = document.getElementById("canvasBoard");
 let context = canvasBoard.getContext("2d");
 
@@ -22,6 +25,22 @@ gridbox.addEventListener('change', (e) => {
     gridLines = !gridLines;
         if (gridLines) boardManager.drawGrid();
         else boardManager.drawOldBoard();
+});
+
+let btnStep = document.getElementById("btnStep");
+btnStep.addEventListener('click', (e) => {
+    boardManager.nextGeneration();
+});
+
+let btnPlay = document.getElementById("btnPlay");
+var interval = false;
+btnPlay.addEventListener('click', (e) => {
+    if (interval) {
+        clearInterval(interval);
+        interval = false;
+    } else {
+        interval = setInterval(() => {boardManager.nextGeneration();}, 500);
+    }
 });
 
 let boardDAO = new BoardDAO(width, height, cellWidth, cellHeight);
