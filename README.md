@@ -5,7 +5,7 @@
 - [x] Game board
 - [ ] Menu bar
 - [ ] Size selector
-- [ ] Draw to canvas
+- [x] Draw to canvas
 - [ ] Load pattern from json
 - [ ] Save pattern to json
 - [ ] Add population data 
