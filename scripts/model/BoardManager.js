@@ -65,6 +65,14 @@ export default class BoardManager {
             this.boardView.drawGrid(this.board1);
         }
         
+        getGrid() {
+            if (this.board1Old) {
+                return this.board2;
+            } else {
+                return this.board1;
+            }
+        }
+        
         nextGeneration() {
             if (this.board1Old) {
                 this.calculateNextBoard(this.board2, this.board1);
@@ -73,5 +81,22 @@ export default class BoardManager {
             }
             this.drawBoard();
             this.board1Old = !this.board1Old;
+        }
+        
+        setCell(x, y, alive) {
+            if (alive) {
+                if (this.board1Old) {
+                    this.board1.grid[y][x].born();
+                } else {
+                    this.board2.grid[y][x].born();
+                }
+            }
+            else {
+               if (this.board1Old) {
+                    this.board1.grid[y][x].die();
+                } else {
+                    this.board2.grid[y][x].die();
+                } 
+            }
         }
 }
