@@ -47,20 +47,20 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
+var mousedown = false;
 canvasBoard.addEventListener("mousedown", (e) => {
-    const rect = canvasBoard.getBoundingClientRect();
-    const x = Math.floor((event.clientX - rect.left) / cellWidth);
-    const y = Math.floor((event.clientY - rect.top) / cellHeight);
-    //console.log("x: " + x + " y: " + y);
-    if (e.which === 1) { //Left mouse button
-        //console.log("LEFT");
-        boardManager.setCell(x, y, true);
+    mousedown = true;
+    drawCell(e);
+});
+
+canvasBoard.addEventListener("mousemove", (e) => {
+    if (mousedown) {
+        drawCell(e);
     }
-    else if (e.which === 3) { //Right mouse button
-        //console.log("Right");
-        boardManager.setCell(x, y, false);
-    }
-    boardManager.drawOldBoard();
+});
+
+canvasBoard.addEventListener("mouseup", () => {
+    mousedown = false;
 });
 
 window.oncontextmenu = function(event) {
@@ -71,3 +71,23 @@ window.oncontextmenu = function(event) {
         return false;
     }
 };
+
+function drawCell(event) {
+    const rect = canvasBoard.getBoundingClientRect();
+    let x = Math.floor((event.clientX - rect.left) / cellWidth);
+    let y = Math.floor((event.clientY - rect.top) / cellHeight);
+    if(x <= 0) x = 0;
+    else if(x >= width) x = width - 1;
+    if(y <= 0) y = 0;
+    else if(y >= height) y = height - 1;
+    //console.log("x: " + x + " y: " + y);
+    if (event.which === 1) { //Left mouse button
+        //console.log("LEFT");
+        boardManager.setCell(x, y, true);
+    }
+    else if (event.which === 3) { //Right mouse button
+        //console.log("Right");
+        boardManager.setCell(x, y, false);
+    }
+    boardManager.drawOldBoard();
+}
