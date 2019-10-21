@@ -53,12 +53,14 @@ canvasBoard.addEventListener("mousedown", (e) => {
     const y = Math.floor((event.clientY - rect.top) / cellHeight);
     //console.log("x: " + x + " y: " + y);
     if (e.which === 1) { //Left mouse button
-        console.log("LEFT");
+        //console.log("LEFT");
+        boardManager.setCell(x, y, true);
     }
     else if (e.which === 3) { //Right mouse button
-        console.log("Right");
-        
+        //console.log("Right");
+        boardManager.setCell(x, y, false);
     }
+    boardManager.drawOldBoard();
 });
 
 window.oncontextmenu = function(event) {
