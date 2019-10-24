@@ -32,6 +32,15 @@ btnStep.addEventListener('click', (e) => {
     boardManager.nextGeneration();
 });
 
+let playInterval = 50;
+let speedSlider = document.getElementById("speedSlider");
+speedSlider.oninput = function() {
+    playInterval = this.value;
+    clearInterval(interval);
+    interval = false;
+    interval = setInterval(() => {boardManager.nextGeneration();}, playInterval);
+};
+
 let btnPlay = document.getElementById("btnPlay");
 var interval = false;
 btnPlay.addEventListener('click', (e) => {
@@ -39,7 +48,7 @@ btnPlay.addEventListener('click', (e) => {
         clearInterval(interval);
         interval = false;
     } else {
-        interval = setInterval(() => {boardManager.nextGeneration();}, 500);
+        interval = setInterval(() => {boardManager.nextGeneration();}, playInterval);
     }
 });
 
