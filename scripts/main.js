@@ -50,8 +50,10 @@ document.addEventListener('keydown', (e) => {
 
 let populationAlive = document.getElementById("populationAlive");
 let populationDead = document.getElementById("populationDead");
+let generation = document.getElementById("generation");
 
 function updateStatisticsText() {
     populationAlive.textContent=boardDAO.getPopulationAlive();
     populationDead.textContent=boardDAO.getPopulationDead();
+    generation.textContent=boardDAO.getGeneration();
 }

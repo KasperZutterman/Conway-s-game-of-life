@@ -50,4 +50,8 @@ export default class BoardDAO {
         getPopulationDead() {
             return this.cellsDead[this.generation - 1];
         }
+        
+        getGeneration() {
+            return this.generation;
+        }
 }
