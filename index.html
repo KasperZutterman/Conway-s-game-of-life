@@ -14,12 +14,18 @@
             <input id="gridCheckbox" type="checkbox" name="grid">Show gridlines<br>
         </form>
         <canvas id="canvasHeatMap" width="600" height="400"></canvas>
-        
+
         <div title="statistics">
             <span>Population Alive:</span><span id="populationAlive">0</span>
             <span>Population Dead :</span><span id="populationDead">0</span>
             <span>Generation      :</span><span id="generation">0</span>
         </div>
-        
+
+        <button id="btnStep" type="button">Step</button>
+        <button id="btnPlay" type="button">Play</button>
+        <div class="slidecontainer">
+            <input type="range" min="1" max="1000" value="200" class="slider" id="speedSlider">
+        </div>
+
     </body>
 </html>
