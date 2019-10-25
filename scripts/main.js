@@ -29,6 +29,7 @@ let dataView = new DataView(canvasHeatMap, boardDAO);
 
 let boardManager = new BoardManager(60, 40, 10, 10, boardView);
 boardManager.drawOldBoard();
+
 //view.draw();
 
 document.addEventListener('keydown', (e) => {
@@ -43,5 +44,14 @@ document.addEventListener('keydown', (e) => {
         boardDAO.addData(boardManager.getGrid());
         dataView.draw();
         if (gridLines) boardManager.drawGrid();
+        updateStatisticsText();
     }
 });
+
+let populationAlive = document.getElementById("populationAlive");
+let populationDead = document.getElementById("populationDead");
+
+function updateStatisticsText() {
+    populationAlive.textContent=boardDAO.getPopulationAlive();
+    populationDead.textContent=boardDAO.getPopulationDead();
+}

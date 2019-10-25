@@ -43,4 +43,11 @@ export default class BoardDAO {
             this.generation++;
         }
         
+        getPopulationAlive() {
+            return this.cellsAlive[this.generation - 1];
+        }
+        
+        getPopulationDead() {
+            return this.cellsDead[this.generation - 1];
+        }
 }

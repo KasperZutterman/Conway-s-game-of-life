@@ -21,7 +21,6 @@ export default class BoardView {
         }
         
         drawGrid(board) {
-            console.log("GRID")
             this.context.fillStyle = "#000000";
             for (let y = 0; y < board.height; y++) {
                 this.context.beginPath();
