@@ -48,7 +48,7 @@ btnPlay.addEventListener('click', (e) => {
         clearInterval(interval);
         interval = false;
     } else {
-        interval = setInterval(() => {boardManager.nextGeneration();}, playInterval);
+        interval = setInterval(() => {drawGeneration();}, playInterval);
     }
 });
 
@@ -68,11 +68,7 @@ document.addEventListener('keydown', (e) => {
         else boardManager.drawOldBoard();
     }
     else if (e.code === "Enter") {
-        boardManager.nextGeneration();
-        boardDAO.addData(boardManager.getGrid());
-        dataView.draw();
-        if (gridLines) boardManager.drawGrid();
-        updateStatisticsText();
+       drawGeneration();
     }
 });
 
@@ -129,5 +125,12 @@ function drawCell(event) {
         boardManager.setCell(x, y, false);
     }
     boardManager.drawOldBoard();
-  
+}
+
+function drawGeneration() {
+    boardManager.nextGeneration();
+    boardDAO.addData(boardManager.getGrid());
+    dataView.draw();
+    if (gridLines) boardManager.drawGrid();
+    updateStatisticsText();
 }
