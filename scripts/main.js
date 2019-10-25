@@ -38,7 +38,7 @@ speedSlider.oninput = function() {
     playInterval = this.value;
     clearInterval(interval);
     interval = false;
-    interval = setInterval(() => {boardManager.nextGeneration();}, playInterval);
+    interval = setInterval(() => {drawGeneration();}, playInterval);
 };
 
 let btnPlay = document.getElementById("btnPlay");
