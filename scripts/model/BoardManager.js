@@ -11,7 +11,7 @@ export default class BoardManager {
             this.boardView = boardView;
             this.board1 = new Board(this.width, this.height, this.cellWidth, this.cellHeight);
             this.board2 = new Board(this.width, this.height, this.cellWidth, this.cellHeight);
-            this.board1Old = false;
+            this.board1Showing = false;
         }
         
         calculateNextBoard(bNew, bOld) {
@@ -46,15 +46,16 @@ export default class BoardManager {
         }
         
         drawBoard() {
-            if (this.board1Old) {
+            if (this.board1Showing) {
                 this.boardView.draw(this.board2);
             } else {
                 this.boardView.draw(this.board1);
-            }      
+            }
+            this.board1Showing = !this.board1Showing;
         }
         
         drawOldBoard() {
-            if (this.board1Old) {
+            if (this.board1Showing) {
                 this.boardView.draw(this.board1);
             } else {
                 this.boardView.draw(this.board2);
@@ -66,7 +67,7 @@ export default class BoardManager {
         }
         
         getGrid() {
-            if (this.board1Old) {
+            if (this.board1Showing) {
                 return this.board2;
             } else {
                 return this.board1;
@@ -74,25 +75,24 @@ export default class BoardManager {
         }
         
         nextGeneration() {
-            if (this.board1Old) {
+            if (this.board1Showing) {
                 this.calculateNextBoard(this.board2, this.board1);
             } else {
                 this.calculateNextBoard(this.board1, this.board2);
             }
             this.drawBoard();
-            this.board1Old = !this.board1Old;
         }
         
         setCell(x, y, alive) {
             if (alive) {
-                if (this.board1Old) {
+                if (this.board1Showing) {
                     this.board1.grid[y][x].born();
                 } else {
                     this.board2.grid[y][x].born();
                 }
             }
             else {
-               if (this.board1Old) {
+               if (this.board1Showing) {
                     this.board1.grid[y][x].die();
                 } else {
                     this.board2.grid[y][x].die();
