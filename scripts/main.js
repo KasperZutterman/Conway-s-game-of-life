@@ -72,8 +72,19 @@ document.addEventListener('keydown', (e) => {
         boardDAO.addData(boardManager.getGrid());
         dataView.draw();
         if (gridLines) boardManager.drawGrid();
+        updateStatisticsText();
     }
 });
+
+let populationAlive = document.getElementById("populationAlive");
+let populationDead = document.getElementById("populationDead");
+let generation = document.getElementById("generation");
+
+function updateStatisticsText() {
+    populationAlive.textContent=boardDAO.getPopulationAlive();
+    populationDead.textContent=boardDAO.getPopulationDead();
+    generation.textContent=boardDAO.getGeneration();
+}
 
 var mousedown = false;
 canvasBoard.addEventListener("mousedown", (e) => {
@@ -118,4 +129,5 @@ function drawCell(event) {
         boardManager.setCell(x, y, false);
     }
     boardManager.drawOldBoard();
+  
 }
