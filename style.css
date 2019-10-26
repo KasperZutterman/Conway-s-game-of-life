@@ -9,10 +9,3 @@ canvas{
 #canvasBoard:hover{
     cursor: crosshair;
 }
-
-form{
-    position:absolute;
-    left: 500px;
-    top: 420px;
-    z-index: 11;
-}
