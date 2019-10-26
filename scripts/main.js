@@ -29,7 +29,12 @@ gridbox.addEventListener('change', (e) => {
 
 let btnStep = document.getElementById("btnStep");
 btnStep.addEventListener('click', (e) => {
-    boardManager.nextGeneration();
+    drawGeneration();
+});
+
+let btnClear = document.getElementById("btnClear");
+btnClear.addEventListener('click', (e) => {
+    initCanvas();
 });
 
 let playInterval = 50;
@@ -60,7 +65,7 @@ let boardView = new BoardView(canvasBoard);
 let dataView = new DataView(canvasHeatMap, boardDAO);
 
 let boardManager = new BoardManager(width, height, cellWidth, cellHeight, boardView);
-boardManager.drawOldBoard();
+initCanvas();
 
 document.addEventListener('keydown', (e) => {
     //console.log(e.code);
@@ -135,4 +140,12 @@ function drawGeneration() {
     dataView.draw();
     if (gridLines) boardManager.drawGrid();
     updateStatisticsText();
+}
+
+function initCanvas() {
+    boardManager.init();
+    boardDAO = new BoardDAO(width, height, cellWidth, cellHeight);
+    dataView = new DataView(canvasHeatMap, boardDAO);
+    dataView.draw();
+    boardManager.drawOldBoard();
 }
