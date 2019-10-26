@@ -47,7 +47,9 @@ btnPlay.addEventListener('click', (e) => {
     if (interval) {
         clearInterval(interval);
         interval = false;
+        btnPlay.textContent = "Play";
     } else {
+        btnPlay.textContent = "Pause";
         interval = setInterval(() => {drawGeneration();}, playInterval);
     }
 });
