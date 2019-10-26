@@ -1,5 +1,4 @@
 import BoardManager from './model/BoardManager.js';
-//import Board from './model/Board.js';
 import BoardView from './view/BoardView.js';
 import DataView from './view/DataView.js';
 import BoardDAO from './model/BoardDAO.js';
@@ -10,9 +9,6 @@ let cellWidth = 10;
 let cellHeight = 10;
 
 let gridLines = false;
-
-//let canvas = document.getElementById("canvas");
-//let context = canvas.getContext("2d");
 
 let canvasBoard = document.getElementById("canvasBoard");
 let context = canvasBoard.getContext("2d");
@@ -122,13 +118,10 @@ function drawCell(event) {
     else if(x >= width) x = width - 1;
     if(y <= 0) y = 0;
     else if(y >= height) y = height - 1;
-    //console.log("x: " + x + " y: " + y);
     if (event.which === 1) { //Left mouse button
-        //console.log("LEFT");
         boardManager.setCell(x, y, true);
     }
     else if (event.which === 3) { //Right mouse button
-        //console.log("Right");
         boardManager.setCell(x, y, false);
     }
     boardManager.drawOldBoard();
