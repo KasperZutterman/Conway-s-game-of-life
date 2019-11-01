@@ -9,3 +9,7 @@ canvas{
 #canvasBoard:hover{
     cursor: crosshair;
 }
+
+button{
+    width: 80px;
+}
