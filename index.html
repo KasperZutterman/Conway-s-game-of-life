@@ -16,16 +16,24 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col">
-                    <form>
-                        <input id="gridCheckbox" type="checkbox" name="grid">Show gridlines<br>
-                    </form>
-                    <button id="btnStep" type="button">Step</button>
-                    <button id="btnPlay" type="button">Play</button>
-                    <button id="btnClear" type="button">Clear</button>
-                    <button id="importJSON" type="button">Import</button>
-                    <button id="exportJSON" type="button">Export</button>
-                    <div class="slidecontainer">
-                        <input type="range" min="1" max="1000" value="200" class="slider" id="speedSlider">
+                    <div class="container">
+                        <div class="card">
+                            <div class="card-header">Controls</div>
+                            <div class="card-body">
+                                <form>
+                                    <input id="gridCheckbox" type="checkbox" name="grid">Show gridlines<br>
+                                </form>
+                                <button id="btnStep" type="button">Step</button>
+                                <button id="btnPlay" type="button">Play</button>
+                                <button id="btnClear" type="button">Clear</button>
+                                <button id="importJSON" type="button">Import</button>
+                                <button id="exportJSON" type="button">Export</button>
+                                <div class="slidecontainer">
+                                    <input type="range" min="1" max="1000" value="200" class="slider" id="speedSlider">
+                                </div>
+                            </div>
+                        </div>
+                                        
                     </div>
                 </div>
                 <div class="col">
