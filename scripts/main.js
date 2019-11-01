@@ -33,6 +33,9 @@ btnClear.addEventListener('click', (e) => {
     initCanvas();
 });
 
+let buttonImport = document.getElementById("importJSON");
+let buttonExport = document.getElementById("exportJSON");
+
 let playInterval = 50;
 let speedSlider = document.getElementById("speedSlider");
 speedSlider.oninput = function() {
