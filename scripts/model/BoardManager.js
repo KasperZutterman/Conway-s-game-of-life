@@ -99,4 +99,9 @@ export default class BoardManager {
                 } 
             }
         }
+        
+        init() {
+            this.board1 = new Board(this.width, this.height, this.cellWidth, this.cellHeight);
+            this.board2 = new Board(this.width, this.height, this.cellWidth, this.cellHeight);
+        }
 }

@@ -10,9 +10,6 @@ canvas{
     cursor: crosshair;
 }
 
-form{
-    position:absolute;
-    left: 500px;
-    top: 420px;
-    z-index: 11;
+button{
+    width: 80px;
 }
