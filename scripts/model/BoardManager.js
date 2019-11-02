@@ -120,4 +120,12 @@ export default class BoardManager {
                 this.board2.set(board);
             }
         }
+        
+        fillRandom(percentage) {
+            if (this.board1Showing) {
+                this.board1.fillRandom(percentage);
+            } else {
+                this.board2.fillRandom(percentage);
+            }
+        }
 }

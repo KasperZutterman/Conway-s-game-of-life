@@ -37,6 +37,12 @@ btnClear.addEventListener('click', (e) => {
     initCanvas();
 });
 
+let btnRandom = document.getElementById("btnRandom");
+btnRandom.addEventListener('click', (e) => {
+    boardManager.fillRandom(0.5);
+    boardManager.drawOldBoard();
+});
+
 let btnImport = document.getElementById("importJSON");
 let input = document.createElement('input');
 input.type = 'file';
