@@ -3,7 +3,7 @@ export default class Cell {
     constructor(x, y) {
         this.x = x;
         this.y = y;
-        this.alive = Math.random() >= 0.7;//false;
+        this.alive = false; //Math.random() >= 0.7;//false;
         this.color = this.alive ? COLOR.STAY: COLOR.DEAD;
     }
     

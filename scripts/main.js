@@ -37,6 +37,18 @@ btnClear.addEventListener('click', (e) => {
     initCanvas();
 });
 
+let btnRandom = document.getElementById("btnRandom");
+btnRandom.addEventListener('click', (e) => {
+    boardManager.fillRandom(randomInterval);
+    boardManager.drawOldBoard();
+});
+
+let randomInterval = 0.5;
+let randomSlider = document.getElementById("randomSlider");
+randomSlider.oninput = function() {
+    randomInterval = this.value / 1000;
+};
+
 let btnImport = document.getElementById("importJSON");
 let input = document.createElement('input');
 input.type = 'file';

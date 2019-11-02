@@ -34,7 +34,17 @@ export default class Board {
                 }
             }
         }
-          
+        
+        fillRandom(percentage) {
+            for (let y = 0; y < this.height; y++) {
+                for (let x = 0; x < this.width; x++) {
+                    if (Math.random() <= percentage) {
+                        this.grid[y][x].born();
+                    }
+                    else {
+                        this.grid[y][x].die();
+                    }
+                }
+            }
+        }       
 }
-
-
