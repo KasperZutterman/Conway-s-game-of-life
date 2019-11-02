@@ -16,6 +16,10 @@ let context = canvasBoard.getContext("2d");
 let canvasHeatMap = document.getElementById("canvasHeatMap");
 let contextHeatMap = canvasHeatMap.getContext("2d");
 
+let populationAlive = document.getElementById("populationAlive");
+let populationDead = document.getElementById("populationDead");
+let generation = document.getElementById("generation");
+
 let gridbox = document.getElementById("gridCheckbox");
 gridbox.addEventListener('change', (e) => {
     gridLines = !gridLines;
@@ -103,10 +107,6 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-let populationAlive = document.getElementById("populationAlive");
-let populationDead = document.getElementById("populationDead");
-let generation = document.getElementById("generation");
-
 function updateStatisticsText() {
     populationAlive.textContent=boardDAO.getPopulationAlive();
     populationDead.textContent=boardDAO.getPopulationDead();
@@ -166,9 +166,11 @@ function drawGeneration() {
 function initCanvas() {
     boardManager.init();
     boardDAO = new BoardDAO(width, height, cellWidth, cellHeight);
+    boardDAO.addData(boardManager.getGrid());
     dataView = new DataView(canvasHeatMap, boardDAO);
     dataView.draw();
     boardManager.drawOldBoard();
+    updateStatisticsText();
 }
 
 function exportToJsonFile(jsonData) {
