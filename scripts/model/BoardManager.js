@@ -104,4 +104,20 @@ export default class BoardManager {
             this.board1 = new Board(this.width, this.height, this.cellWidth, this.cellHeight);
             this.board2 = new Board(this.width, this.height, this.cellWidth, this.cellHeight);
         }
+        
+        getActiveBoard() {
+            if (this.board1Showing) {
+                return this.board1;
+            } else {
+                return this.board2;
+            } 
+        }
+        
+        setActiveBoard(board) {
+            if (this.board1Showing) {
+                this.board1.set(board);
+            } else {
+                this.board2.set(board);
+            }
+        }
 }

@@ -16,6 +16,10 @@ let context = canvasBoard.getContext("2d");
 let canvasHeatMap = document.getElementById("canvasHeatMap");
 let contextHeatMap = canvasHeatMap.getContext("2d");
 
+let populationAlive = document.getElementById("populationAlive");
+let populationDead = document.getElementById("populationDead");
+let generation = document.getElementById("generation");
+
 let gridbox = document.getElementById("gridCheckbox");
 gridbox.addEventListener('change', (e) => {
     gridLines = !gridLines;
@@ -33,8 +37,33 @@ btnClear.addEventListener('click', (e) => {
     initCanvas();
 });
 
-let buttonImport = document.getElementById("importJSON");
-let buttonExport = document.getElementById("exportJSON");
+let btnImport = document.getElementById("importJSON");
+let input = document.createElement('input');
+input.type = 'file';
+input.onchange = e => {
+    let file = e.target.files[0];
+
+    // setting up the reader
+   var reader = new FileReader();
+   reader.readAsText(file);
+   
+   // here we tell the reader what to do when it's done reading...
+   reader.onload = readerEvent => {
+      initCanvas();
+      boardManager.setActiveBoard(JSON.parse(reader.result));
+      boardManager.drawOldBoard();
+      input.value = '';
+   };  
+};
+
+btnImport.addEventListener('click', (e) => {
+    input.click();
+});
+
+let btnExport = document.getElementById("exportJSON");
+btnExport.addEventListener('click', (e) => {
+    exportToJsonFile(boardManager.getActiveBoard());
+});
 
 let playInterval = 50;
 let speedSlider = document.getElementById("speedSlider");
@@ -77,10 +106,6 @@ document.addEventListener('keydown', (e) => {
        drawGeneration();
     }
 });
-
-let populationAlive = document.getElementById("populationAlive");
-let populationDead = document.getElementById("populationDead");
-let generation = document.getElementById("generation");
 
 function updateStatisticsText() {
     populationAlive.textContent=boardDAO.getPopulationAlive();
@@ -141,7 +166,21 @@ function drawGeneration() {
 function initCanvas() {
     boardManager.init();
     boardDAO = new BoardDAO(width, height, cellWidth, cellHeight);
+    boardDAO.addData(boardManager.getGrid());
     dataView = new DataView(canvasHeatMap, boardDAO);
     dataView.draw();
     boardManager.drawOldBoard();
+    updateStatisticsText();
+}
+
+function exportToJsonFile(jsonData) {
+    let dataStr = JSON.stringify(jsonData);
+    let dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+
+    let exportFileDefaultName = 'data.json';
+
+    let linkElement = document.createElement('a');
+    linkElement.setAttribute('href', dataUri);
+    linkElement.setAttribute('download', exportFileDefaultName);
+    linkElement.click();
 }
