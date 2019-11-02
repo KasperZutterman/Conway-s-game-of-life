@@ -112,4 +112,12 @@ export default class BoardManager {
                 return this.board2;
             } 
         }
+        
+        setActiveBoard(board) {
+            if (this.board1Showing) {
+                this.board1.set(board);
+            } else {
+                this.board2.set(board);
+            }
+        }
 }

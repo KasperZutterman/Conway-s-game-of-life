@@ -7,6 +7,13 @@ export default class Cell {
         this.color = this.alive ? COLOR.STAY: COLOR.DEAD;
     }
     
+    set(cell) {
+        this.x = cell.x;
+        this.y = cell.y;
+        this.alive = cell.alive;
+        this.color = cell.color;
+    }
+    
     stay() {
         this.alive = true;
         this.color = COLOR.STAY;
