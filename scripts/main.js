@@ -39,9 +39,15 @@ btnClear.addEventListener('click', (e) => {
 
 let btnRandom = document.getElementById("btnRandom");
 btnRandom.addEventListener('click', (e) => {
-    boardManager.fillRandom(0.5);
+    boardManager.fillRandom(randomInterval);
     boardManager.drawOldBoard();
 });
+
+let randomInterval = 0.5;
+let randomSlider = document.getElementById("randomSlider");
+randomSlider.oninput = function() {
+    randomInterval = this.value / 1000;
+};
 
 let btnImport = document.getElementById("importJSON");
 let input = document.createElement('input');
