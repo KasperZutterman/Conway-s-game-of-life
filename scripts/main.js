@@ -38,23 +38,18 @@ let input = document.createElement('input');
 input.type = 'file';
 input.onchange = e => {
     let file = e.target.files[0];
-    //console.log(file);
 
     // setting up the reader
    var reader = new FileReader();
-   //reader.readAsDataURL(file); // this is reading as data url
-
+   reader.readAsText(file);
+   
    // here we tell the reader what to do when it's done reading...
    reader.onload = readerEvent => {
-      //var content = readerEvent.target.result; // this is the content!
-      //console.log(content);
-      //console.log(JSON.parse(reader.result));
+      initCanvas();
       boardManager.setActiveBoard(JSON.parse(reader.result));
       boardManager.drawOldBoard();
       input.value = '';
-   };
-   
-   reader.readAsText(file);
+   };  
 };
 
 btnImport.addEventListener('click', (e) => {
