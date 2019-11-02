@@ -33,8 +33,14 @@ btnClear.addEventListener('click', (e) => {
     initCanvas();
 });
 
-let buttonImport = document.getElementById("importJSON");
-let buttonExport = document.getElementById("exportJSON");
+let btnImport = document.getElementById("importJSON");
+btnImport.addEventListener('click', (e) => {
+
+});
+let btnExport = document.getElementById("exportJSON");
+btnExport.addEventListener('click', (e) => {
+    exportToJsonFile(boardManager.getActiveBoard());
+});
 
 let playInterval = 50;
 let speedSlider = document.getElementById("speedSlider");
@@ -144,4 +150,16 @@ function initCanvas() {
     dataView = new DataView(canvasHeatMap, boardDAO);
     dataView.draw();
     boardManager.drawOldBoard();
+}
+
+function exportToJsonFile(jsonData) {
+    let dataStr = JSON.stringify(jsonData);
+    let dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+
+    let exportFileDefaultName = 'data.json';
+
+    let linkElement = document.createElement('a');
+    linkElement.setAttribute('href', dataUri);
+    linkElement.setAttribute('download', exportFileDefaultName);
+    linkElement.click();
 }
