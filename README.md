@@ -6,8 +6,8 @@
 - [ ] Menu bar
 - [ ] Size selector
 - [x] Draw to canvas
-- [ ] Load pattern from json
-- [ ] Save pattern to json
-- [ ] Add population data 
+- [x] Load pattern from json
+- [x] Save pattern to json
+- [x] Add population data 
 - [ ] Add color picker
 - [ ] Attractive layout
